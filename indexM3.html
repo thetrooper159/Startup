@@ -1,23 +1,96 @@
-<!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="schema2.css">
 <script src="jquery-3.1.1.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#hide").click(function(){
-    $("p").hide();
-  });
-  $("#show").click(function(){
-    $("p").show();
-  });
-});
-</script>
-</head>
-<body>
-<p>Hello</p>
+<script src="Test.js"></script>
 
-<button id="hide">hide</button>
-<button id="show">show</button>
+<body >
+
+
+
+
+  <h1 >Kyriakos Mantzouridis</h1>
+    <br>
+<div id="content">
+<div id="nav">
+<h3>Navigation</h3>
+<ul>
+  <li><a href="javascript:void(0)"  onclick="showpage(1)">Home</a></li>
+  <li><a href="javascript:void(0)"  onclick="showpage(2)">Pictures</a></li>
+  <li><a href="javascript:void(0)" onclick="showpage(3)">More</a></li>
+
+</ul>
+<h3>Current Classes</h3>
+<ul style="list-style-type:disc">
+<li>Server Management</li>
+<li>Advanced Programming</li>
+<li>Data Analytics</li>
+<li>Human Resource Management</li>
+</ul>
+</div>
+</div>
+<div id="main">
+  <div id="page1">
+    <br>
+    <h2>About Me:</h2>
+    <p> I am a student at Point Park University, currently I am enrolled in the IT program.
+I am interested in software development and video game development.
+ </p>
+
+ <hr>
+ <p>I am a very active person,
+I enjoy participating in the martial arts, cycling, running, hiking, and urban exploration with my
+fiance and our American Bully Crimson.</p>
+    </p>
+    <select id="comboColor" href="javascript:void(0)" onChange="changeColor(2)">
+              <option id="black" value="1">black</option>
+              <option id="blueBox" value="2">Blue</option>
+              </select>
+    <h3>Contact  Info: </h3>
+      <table>
+        <tr>
+       <td>Email</td>
+        <td>Kmantz@pointpark.edu</td>
+        </tr>
+          <tr>
+            <td>Phone</td>
+            <td>N/A</td>
+           </tr>
+         </table>
+
+      </div>
+  <br>
+    <section>
+
+
+    </section>
+  <br>
+
+
+         <div id="page2" style="display:none;">
+        
+
+         <img src="Family.jpg" alt="dog" width="410" height="400" style="-webkit-transform:rotate(270deg);">
+         </div>
+
+    <div id="page3" style="display:none;">
+    <div class="pac">
+    <div class="pacman">
+    <div class="pacman-top"></div>
+    <div class="pacman-bottom"></div>
+    <div class="feed"></div>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Enjoy the Pac-Man!</p>
+    </div>
+
+
+
 
 </body>
+
 </html>
