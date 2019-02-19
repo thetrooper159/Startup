@@ -1,28 +1,60 @@
 <html>
+<head>
+<title>JqueryAPI</title></head>
 <body>
+  <h1>In class API</h1>
+  <input type ="button" value = "search" id ="searchButton">
+  <input type ="text" vaule="search" id ="search">
+  <div class="buttonOptions">
+  <input type ="button" id="pToken" value="Previous">
+  <input type="button" id="nToken" value="Next">
+</div>
 
-  
-<h1>Kyriakos Mantzouridis</h1>
+<div id ="output"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    var pageToken ={};
+      $(document).ready(function(){
+        $('#searchButton').click(function(){
+        searchYoutube();
+      })
+      $('.tokenClass').click(function(){
+        pageToken.current = $(this).val()=='Next' ? pageToken.nextPage : pageToken.prevPage;
 
-  <h3> Here is a little about me: </h3>
-      <p> I am a student at Point Park University, currently I am enrolled in the IT program.
-    I am interested in software development and video game development. I am a very active person,
-    I enjoy participating in the martial arts, cycling, running, hiking, and urban exploration with my
-    fiance and our american bully Crimson.
-      </p>
-    <h2>Current Classes</h2>
-    <ul style="list-style-type:disc">
-  <li>Server Management</li>
-  <li>Advanced Programming</li>
-  <li>Data Analytics</li>
-  <li>Human Resource Management</li>
-</ul>
-  <h2>Contact  Info</h2>
-    <ul style="list-style-type:disc">
-        <li>Kmantz@pointpark.edu</li>
-    </ul>
-  <img src="Family.jpg" alt="dog" width="410" height="400" style="-webkit-transform:rotate(270deg);">
+      })
 
+})
+
+function searchYoutube(){
+  $.ajax({
+    url:'https://www.googleapis.com/youtube/v3/search',
+    dataType:'json',
+    type:'GET',
+  data:{
+    key:'AIzaSyCPUSShW5oNrQE6Fp2XbKmOlHAuGG_K4Bk',
+    q:$('#search').val(),
+    part:'snippet',
+    maxResults:25,
+    pageToken: pageToken.current
+
+  }
+}).done(function(data){
+  pageToken.nextPage = data.nextPageToken;
+  pageToken.prevPage = data.prevPageToken;
+  console.log(pageToken);
+  var html="";
+  $.each(data['items'], function(index,value){
+    html+='<div> <div class ="title">'+value.snippet.title+'</div>';
+    html+='<div> <div  class ="url">'+value.id.videoId+'</div>';
+    html+='<div> <img class = "thumbnail"> src ="'+value.snippet.thumbnails.medium.url+'"</div>';
+    html+='</div>';
+
+      })
+      $('#output').html(html);
+  })
+}
+//https://www.googleapis.com/youtube/v3/search?q=test&part=snippet&key=******YOUR**API**KEY**VALUE********
+</script>
 </body>
 
 </html>
